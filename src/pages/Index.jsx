@@ -62,8 +62,9 @@ export default function Index() {
           </div>
 
           <p className="hero-description">
-            Crafting beautiful digital experiences through Frontend, Backend,
-            and Mobile development is what I do best.
+            I’m a passionate developer who loves turning ideas into real,
+            user-focused digital experiences. I build modern, responsive
+            applications with clean design and efficient code.
           </p>
 
           <div className="hero-buttons">
@@ -98,8 +99,8 @@ export default function Index() {
       <footer className="footer">
         <div className="container">
           <p>
-            &copy; {currentYear} Adeniji Isaac - Built with React & Love | All
-            rights reserved.
+            &copy; {currentYear} Adeniji Isaac - Built with Passion & Skills |
+            All rights reserved.
           </p>
         </div>
       </footer>

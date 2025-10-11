@@ -1,11 +1,40 @@
 import { useState } from "react";
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs } from "react-icons/fa";
+import {
+  FaExternalLinkAlt,
+  FaReact,
+  FaGithub,
+  FaVuejs,
+  FaAngular,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaNodeJs,
+  FaPython,
+  FaJava,
+  FaPhp,
+  FaGitAlt,
+  FaAndroid,
+  FaApple,
+} from "react-icons/fa";
 import {
   SiTypescript,
-  SiMongodb,
-  SiReact,
-  SiFlutter,
   SiJavascript,
+  SiMongodb,
+  SiPostgresql,
+  SiReact,
+  SiKotlin,
+  SiSwift,
+  SiExpress,
+  SiDjango,
+  SiSpring,
+  SiLaravel,
+  SiMysql,
+  SiRedis,
+  SiFlutter,
+  SiDotnet,
+  SiXampp,
+  SiDart,
+  SiFirebase,
 } from "react-icons/si";
 import "../styles/Projects.css";
 
@@ -14,20 +43,20 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "I-Fitness Platform",
       description:
-        "A full-stack e-commerce solution with real-time inventory management, payment processing, and admin dashboard.",
+        "A full-stack fitness platform with real-time workout tracking, user profiles, and social features.",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+        "https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/12/12/13/sweat-it-3.jpg",
       category: "Full Stack",
       technologies: [
-        { name: "React", icon: <FaReact /> },
-        { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
-        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "HTML", icon: <FaHtml5 /> },
+        { name: "CSS", icon: <FaCss3Alt /> },
+        { name: ".NET", icon: <SiDotnet /> },
+        { name: "mySQL", icon: <SiMysql /> },
       ],
-      github: "#",
-      live: "#",
+      github: "",
+      live: "",
     },
     {
       title: "College Event Management App",
@@ -43,16 +72,15 @@ const Projects = () => {
       live: "https://campusconnect-stacksmith-techwiz6.netlify.app/",
     },
     {
-      title: "Fitness Tracking Mobile App",
+      title: "ChapterHouse Mobile App",
       description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features.",
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+        "Cross-platform mobile app for bookstore management with inventory tracking, user accounts, and social features.",
+      image: "/Bookstore.png",
       category: "Mobile",
       technologies: [
-        { name: "React Native", icon: <SiReact /> },
-        { name: "TypeScript", icon: <SiTypescript /> },
-        { name: "Node.js", icon: <FaNodeJs /> },
+        { name: "Flutter", icon: <SiFlutter /> },
+        { name: "Dart", icon: <SiDart /> },
+        { name: "Firebase", icon: <SiFirebase /> },
       ],
       github: "#",
       live: "#",
@@ -87,16 +115,14 @@ const Projects = () => {
       live: "#",
     },
     {
-      title: "Recipe Sharing App",
+      title: "CareNest Mobile App",
       description:
-        "Flutter-based mobile app for sharing and discovering recipes with social features and meal planning.",
-      image:
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
+        "React-Native mobile app for tracking pregnancy milestones, health tips, and community support.",
+      image: "/CARENEST.png",
       category: "Mobile",
       technologies: [
-        { name: "Flutter", icon: <SiFlutter /> },
-        { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "React-Native", icon: <SiReact /> },
+        { name: "Firebase", icon: <SiFirebase /> },
       ],
       github: "#",
       live: "#",
@@ -166,14 +192,18 @@ const Projects = () => {
                 </div>
 
                 <div className="project-links">
-                  <a href={project.github} className="project-link">
-                    <FaGithub />
-                    <span>Code</span>
-                  </a>
-                  <a href={project.live} className="project-link">
-                    <FaExternalLinkAlt />
-                    <span>Live Demo</span>
-                  </a>
+                  {project.github && project.github !== "#" && (
+                    <a href={project.github} className="project-link">
+                      <FaGithub />
+                      <span>Code</span>
+                    </a>
+                  )}
+                  {project.live && project.live !== "#" && (
+                    <a href={project.live} className="project-link">
+                      <FaExternalLinkAlt />
+                      <span>Live Demo</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

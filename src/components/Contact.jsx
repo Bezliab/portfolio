@@ -86,7 +86,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-item-content">
                   <h4>Location</h4>
-                  <p>Oyo, Nigeria</p>
+                  <p>Ibadan, Oyo State, Nigeria</p>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@ const Contact = () => {
 
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required />
+              <input type="text" id="subject" name="subject" />
             </div>
 
             <div className="form-group">

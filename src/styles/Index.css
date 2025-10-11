@@ -13,11 +13,11 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(
-    135deg,
-    var(--color-white) 0%,
-    var(--color-grey-light) 100%
-  );
-  background-image: url("../public/work.HEIC");
+      135deg,
+      rgba(var(--color-white-rgb), 0.6),
+      rgba(var(--color-grey-light-rgb), 0.6)
+    ),
+    url("https://www.fundacioncadah.org/j289eghfd7511986_uploads/41321686_l%202.jpg");
 }
 
 .hero-content {
