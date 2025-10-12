@@ -8,15 +8,18 @@ import Contact from "../components/Contact";
 import Fireworks from "../components/Fireworks";
 import "../styles/theme.css";
 import "../styles/Index.css";
+import SplitText from "../components/SplitText";
 
 export default function Index() {
   const [displayText, setDisplayText] = useState("");
-
-  const [showCursor, setShowCursor] = useState(true);
-  const fullText = "Full Stack & Mobile Developer";
-  const currentYear = new Date().getFullYear();
+  const [showCursor, setShowCursor] = useState(false);
+  const [startTyping, setStartTyping] = useState(false);
   const [showAnimation, setShowAnimation] = useState(true);
 
+  const fullText = "Full Stack & Mobile Developer";
+  const currentYear = new Date().getFullYear();
+
+  // Hide fireworks after 30s just in case
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAnimation(false);
@@ -24,7 +27,10 @@ export default function Index() {
     return () => clearTimeout(timer);
   }, []);
 
+  // 🧠 Typewriter effect starts only after SplitText completes
   useEffect(() => {
+    if (!startTyping) return;
+
     let index = 0;
     const timer = setInterval(() => {
       if (index <= fullText.length) {
@@ -37,7 +43,15 @@ export default function Index() {
     }, 100);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [startTyping]);
+
+  // Triggered when "Adeniji Isaac" finishes animating
+  const handleAnim = () => {
+    console.log("All letters have animated");
+    setShowAnimation(false); // Stop fireworks
+    setShowCursor(true);
+    setStartTyping(true); // Start typing subtitle
+  };
 
   const scrollToAbout = () => {
     document.getElementById("about").scrollIntoView({ behavior: "smooth" });
@@ -51,7 +65,21 @@ export default function Index() {
         <Fireworks />
         {showAnimation && <div className="fireworks-overlay"></div>}
         <div className="hero-content">
-          <h1 className="hero-title">Adeniji Isaac</h1>
+          {/* ✨ Animated Name with GSAP SplitText */}
+          <SplitText
+            text="Adeniji Isaac"
+            tag="h1"
+            className="hero-title"
+            delay={40}
+            duration={0.8}
+            ease="power2.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 30 }}
+            to={{ opacity: 1, y: 0 }}
+            onLetterAnimationComplete={handleAnim}
+          />
+
+          {/* ✨ Typewriter subtitle */}
           <div className="hero-subtitle">
             {displayText}
             {showCursor && (
@@ -61,7 +89,7 @@ export default function Index() {
             )}
           </div>
 
-          <p className="hero-description">
+          <p className="hero-description fade-in">
             I’m a passionate developer who loves turning ideas into real,
             user-focused digital experiences. I build modern, responsive
             applications with clean design and efficient code.
