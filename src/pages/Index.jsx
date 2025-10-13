@@ -1,57 +1,59 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { gsap } from "gsap";
 import Header from "../components/Header";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
-import Fireworks from "../components/Fireworks";
 import "../styles/theme.css";
 import "../styles/Index.css";
-import SplitText from "../components/SplitText";
+import HyperspeedBackground from "../components/HyperspeedBackground";
 
 export default function Index() {
-  const [displayText, setDisplayText] = useState("");
-  const [showCursor, setShowCursor] = useState(false);
-  const [startTyping, setStartTyping] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(true);
+  const heroTitle = "Adeniji Isaac";
+  const heroTitleRefs = useRef([]);
+  const [typedSubtitle, setTypedSubtitle] = useState("");
+  const subtitleText = "Full Stack & Mobile Developer";
+  const [showCursor, setShowCursor] = useState(true);
+  const hyperspeedRef = useRef(null);
 
-  const fullText = "Full Stack & Mobile Developer";
   const currentYear = new Date().getFullYear();
 
-  // Hide fireworks after 30s just in case
+  // Animate each letter of the hero title
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAnimation(false);
-    }, 30000);
-    return () => clearTimeout(timer);
+    gsap.fromTo(
+      heroTitleRefs.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.07,
+        duration: 0.7,
+        ease: "power3.out",
+        onComplete: () => {
+          // Start typewriter after title animation
+          let i = 0;
+          const type = () => {
+            if (i <= subtitleText.length) {
+              setTypedSubtitle(subtitleText.slice(0, i));
+              i++;
+              setTimeout(type, 60);
+            }
+          };
+          type();
+        },
+      }
+    );
   }, []);
 
-  // 🧠 Typewriter effect starts only after SplitText completes
+  // Blinking cursor effect
   useEffect(() => {
-    if (!startTyping) return;
-
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-        setShowCursor(false);
-      }
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, [startTyping]);
-
-  // Triggered when "Adeniji Isaac" finishes animating
-  const handleAnim = () => {
-    console.log("All letters have animated");
-    setShowAnimation(false); // Stop fireworks
-    setShowCursor(true);
-    setStartTyping(true); // Start typing subtitle
-  };
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   const scrollToAbout = () => {
     document.getElementById("about").scrollIntoView({ behavior: "smooth" });
@@ -62,32 +64,40 @@ export default function Index() {
       <Header />
 
       <section id="home" className="hero-section">
-        <Fireworks />
-        {showAnimation && <div className="fireworks-overlay"></div>}
+        <HyperspeedBackground ref={hyperspeedRef} />
         <div className="hero-content">
-          {/* ✨ Animated Name with GSAP SplitText */}
-          <SplitText
-            text="Adeniji Isaac"
-            tag="h1"
-            className="hero-title"
-            delay={40}
-            duration={0.8}
-            ease="power2.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 30 }}
-            to={{ opacity: 1, y: 0 }}
-            onLetterAnimationComplete={handleAnim}
-          />
-
-          {/* ✨ Typewriter subtitle */}
-          <div className="hero-subtitle">
-            {displayText}
-            {showCursor && (
-              <span style={{ opacity: 1, animation: "blink 1s infinite" }}>
-                |
+          {/* Hero Title */}
+          <h1 className="hero-title">
+            {heroTitle.split("").map((char, i) => (
+              <span
+                key={i}
+                ref={(el) => (heroTitleRefs.current[i] = el)}
+                style={{
+                  display: "inline-block",
+                  opacity: 0,
+                  minWidth: char === " " ? "0.5em" : undefined,
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
               </span>
-            )}
-          </div>
+            ))}
+          </h1>
+
+          {/* Hero Subtitle */}
+          <h2
+            className="hero-subtitle"
+            style={{
+              color: "var(--text-primary)",
+              textAlign: "center",
+              minHeight: "2rem",
+              letterSpacing: "0.5px",
+              fontFamily: "inherit",
+              fontWeight: 400,
+            }}
+          >
+            {typedSubtitle}
+            <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
+          </h2>
 
           <p className="hero-description fade-in">
             I’m a passionate developer who loves turning ideas into real,
