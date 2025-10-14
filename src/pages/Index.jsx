@@ -8,10 +8,10 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import "../styles/theme.css";
 import "../styles/Index.css";
-import HyperspeedBackground from "../components/HyperspeedBackground";
+import Fireworks from "../components/Fireworks";
 
 export default function Index() {
-  const heroTitle = "Adeniji Isaac";
+  const heroTitle = "What I offer!";
   const heroTitleRefs = useRef([]);
   const [typedSubtitle, setTypedSubtitle] = useState("");
   const subtitleText = "Full Stack & Mobile Developer";
@@ -64,7 +64,7 @@ export default function Index() {
       <Header />
 
       <section id="home" className="hero-section">
-        <HyperspeedBackground ref={hyperspeedRef} />
+        <Fireworks />
         <div className="hero-content">
           {/* Hero Title */}
           <h1 className="hero-title">
