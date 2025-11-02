@@ -68,7 +68,7 @@ const Projects = () => {
         { name: "React", icon: <FaReact /> },
         { name: "JavaScript", icon: <SiJavascript /> },
       ],
-      github: "https://github.com/Bezliab/campusconnect",
+      // github: "https://github.com/Bezliab/campusconnect",
       live: "https://campusconnect-stacksmith-techwiz6.netlify.app/",
     },
     {

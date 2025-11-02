@@ -29,6 +29,7 @@ import {
   SiFlutter,
   SiDotnet,
   SiXampp,
+  SiDart,
 } from "react-icons/si";
 import "../styles/Skills.css";
 
@@ -38,7 +39,7 @@ const Skills = () => {
       title: "Frontend Development",
       skills: [
         { name: "React", icon: <FaReact /> },
-        // { name: "Vue.js", icon: <FaVuejs /> },
+        { name: "Vue.js", icon: <FaVuejs /> },
         // { name: "Angular", icon: <FaAngular /> },
         { name: "TypeScript", icon: <SiTypescript /> },
         { name: "JavaScript", icon: <FaJs /> },
@@ -69,6 +70,7 @@ const Skills = () => {
         // { name: "Kotlin", icon: <SiKotlin /> },
         { name: "iOS", icon: <FaApple /> },
         { name: "Android", icon: <FaAndroid /> },
+        { name: "Dart", icon: <SiDart /> },
       ],
     },
     {

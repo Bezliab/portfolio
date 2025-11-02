@@ -11,7 +11,7 @@ import "../styles/Index.css";
 import Fireworks from "../components/Fireworks";
 
 export default function Index() {
-  const heroTitle = "What I offer!";
+  const heroTitle = "Adeniji Isaac";
   const heroTitleRefs = useRef([]);
   const [typedSubtitle, setTypedSubtitle] = useState("");
   const subtitleText = "Full Stack & Mobile Developer";
@@ -73,8 +73,6 @@ export default function Index() {
                 key={i}
                 ref={(el) => (heroTitleRefs.current[i] = el)}
                 style={{
-                  display: "inline-block",
-                  opacity: 0,
                   minWidth: char === " " ? "0.5em" : undefined,
                 }}
               >
