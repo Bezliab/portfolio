@@ -97,7 +97,7 @@ const Projects = () => {
         { name: "TypeScript", icon: <SiTypescript /> },
       ],
       github: "#",
-      live: "#",
+      live: "https://bezliab.github.io/weather/",
     },
     {
       title: "Chat Application",
