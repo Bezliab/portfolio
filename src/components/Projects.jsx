@@ -100,11 +100,10 @@ const Projects = () => {
       live: "https://bezliab.github.io/weather/",
     },
     {
-      title: "Chat Application",
+      title: "Invoice Generator",
       description:
-        "Real-time chat application with multiple rooms, file sharing, and video calling capabilities.",
-      image:
-        "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&h=400&fit=crop",
+        "A comprehensive web app designed to streamline the invoicing and payment management process for businesses. Business owners can create, send, and track invoices effortlessly.",
+      image: "./ingen.png",
       category: "Full Stack",
       technologies: [
         { name: "React", icon: <FaReact /> },
@@ -112,7 +111,7 @@ const Projects = () => {
         { name: "MongoDB", icon: <SiMongodb /> },
       ],
       github: "#",
-      live: "#",
+      live: "https://ingen-wheat.vercel.app/",
     },
     {
       title: "CareNest Mobile App",
