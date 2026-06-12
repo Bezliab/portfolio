@@ -86,7 +86,6 @@ const Projects = () => {
       live: "#",
     },
     {
-      // weather dashboard
       title: "Weather Dashboard",
       description:
         "Beautiful weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
