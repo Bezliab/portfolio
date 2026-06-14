@@ -173,7 +173,7 @@ const Projects = () => {
                 alt={project.title}
                 className="project-image"
               />
-
+{/* content */}
               <div className="project-content">
                 <span className="project-category">{project.category}</span>
 
